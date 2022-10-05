@@ -17,7 +17,7 @@ class Node:
 
     def createChildren(self):
         if self.depth>=0 and self.turn>0: 
-            ''' turn = 1 this code executes when comps turn (left tuple attacking right tuple)'''
+            ''' turn = 1 this code executes when comps turn (left attacking right)'''
             if self.state[1][0]!=0 and self.state[0][0] !=0:
                 ll = self.state[1][0] + self.state[0][0]
                 if ll>=5:
@@ -63,7 +63,7 @@ class Node:
                 self.children.append(Node(self.depth-1, self, k5, -self.turn))
 
         elif self.depth>=0 and self.turn<0: 
-            ''' turn = -1 this code executes when players turn (right tuple attacking left tuple)'''
+            ''' turn = -1 this code executes when players turn (right attacking left)'''
             if self.state[1][0]!=0 and self.state[0][0] !=0:
                 ll = self.state[1][0] + self.state[0][0]
                 if ll>=5:
@@ -111,10 +111,10 @@ class Node:
 
     def getstrength(self):
         if self.state[1][1]==0 and self.state[1][0]==0:
-            '''players tuple is all zeroes, comp wins'''
+            '''players hand is all zeroes, comp wins'''
             return 1000
         elif self.state[0][1]==0 and self.state[0][0]==0:
-            '''comps tuple is all zeroes, player wins'''
+            '''comps hand is all zeroes, player wins'''
             return -1000
         else:
             return 0
